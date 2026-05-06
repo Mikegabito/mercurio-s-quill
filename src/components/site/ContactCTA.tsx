@@ -46,6 +46,7 @@ export function ContactCTA() {
                   variant="secondary"
                   rel="noopener noreferrer"
                   target="_blank"
+                  className="!text-[oklch(0.96_0.02_85)] !border-[oklch(0.96_0.02_85_/_0.4)] hover:!border-[oklch(0.96_0.02_85_/_0.8)] hover:!bg-[oklch(0.96_0.02_85_/_0.08)]"
                 >
                   <Instagram size={16} />
                   Segui su Instagram
@@ -95,14 +96,14 @@ function ContactRow({
     <li>
       <a
         href={href}
-        className="warm-glass flex items-center gap-4 rounded-2xl px-5 py-4 transition hover:border-primary/50"
+        className="flex items-center gap-4 rounded-2xl px-5 py-4 border border-[oklch(0.96_0.02_85_/_0.18)] bg-[oklch(0.96_0.02_85_/_0.06)] backdrop-blur-md transition hover:border-[oklch(0.78_0.13_65_/_0.6)] hover:bg-[oklch(0.96_0.02_85_/_0.1)]"
       >
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-gold)] text-primary-foreground shrink-0">
           {icon}
         </span>
         <span className="flex flex-col">
-          <span className="text-xs uppercase tracking-[0.18em] text-foreground/55">{label}</span>
-          <span className="font-display text-lg text-foreground">{value}</span>
+          <span className="text-xs uppercase tracking-[0.18em] text-[oklch(0.96_0.02_85_/_0.6)]">{label}</span>
+          <span className="font-display text-lg text-[oklch(0.96_0.02_85)]">{value}</span>
         </span>
       </a>
     </li>
