@@ -13,22 +13,25 @@ export function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-[2rem] border border-accent/30 p-8 sm:p-14 lg:p-20"
-          style={{ background: "var(--gradient-warm)" }}
+          className="relative overflow-hidden rounded-[2rem] border border-foreground/40 p-8 sm:p-14 lg:p-20 text-[oklch(0.96_0.02_85)]"
+          style={{
+            background:
+              "linear-gradient(135deg, oklch(0.22 0.03 50) 0%, oklch(0.28 0.05 45) 60%, oklch(0.34 0.09 40) 100%)",
+          }}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full opacity-40"
-            style={{ background: "radial-gradient(circle, oklch(0.75 0.13 65 / 0.5), transparent 70%)" }}
+            className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full opacity-50"
+            style={{ background: "radial-gradient(circle, oklch(0.7 0.14 60 / 0.45), transparent 70%)" }}
           />
 
           <div className="relative grid gap-12 lg:grid-cols-12 items-center">
             <div className="lg:col-span-7">
-              <p className="mb-4 text-xs uppercase tracking-[0.22em] text-primary">Partecipa</p>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-foreground text-balance">
-                Richiedi il <span className="italic text-primary">bando</span>.
+              <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[oklch(0.8_0.13_70)]">Partecipa</p>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-balance">
+                Richiedi il <span className="italic text-[oklch(0.78_0.13_65)]">bando</span>.
               </h2>
-              <p className="mt-6 max-w-xl text-foreground/75 text-lg leading-relaxed">
+              <p className="mt-6 max-w-xl text-current/80 text-lg leading-relaxed opacity-85">
                 Per ricevere informazioni sull'ottava edizione, sulle modalità di partecipazione e
                 sulle scadenze, contatta il comitato organizzatore.
               </p>
