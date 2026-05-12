@@ -1,58 +1,85 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Feather } from "lucide-react";
+import { ChevronLeft, ChevronRight, Feather, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Container } from "./Container";
 import { Section } from "./Section";
 
 type Edition = {
+  edition: string; // Roman
   year: string;
   src?: string;
   alt: string;
   description: string;
+  placeholderText?: string;
+  placeholderIcon?: "feather" | "sparkles";
 };
 
 const editions: Edition[] = [
   {
+    edition: "I",
     year: "2019",
     src: "/images/edizioni/2019.jpeg",
-    alt: "Cerimonia di premiazione del Concorso Mercurio, edizione 2019",
+    alt: "Cerimonia di premiazione del Concorso Mercurio, I Edizione (2019)",
     description:
-      "Una sala storica, le targhe in fila, le parole dei vincitori. La voce del Premio prende forma.",
+      "La prima edizione: una sala storica, le targhe in fila, le parole dei vincitori. La voce del Premio prende forma.",
   },
   {
+    edition: "II",
     year: "2020",
-    alt: "Edizione 2020 — archivio fotografico in aggiornamento",
+    alt: "II Edizione (2020) — archivio fotografico in aggiornamento",
     description: "Archivio fotografico in aggiornamento.",
+    placeholderText: "Archivio fotografico in aggiornamento",
+    placeholderIcon: "feather",
   },
   {
+    edition: "III",
     year: "2021",
     src: "/images/edizioni/2021.jpg",
-    alt: "Lettura e premiazione, edizione 2021 del Concorso Mercurio",
+    alt: "Lettura e premiazione, III Edizione (2021) del Concorso Mercurio",
     description:
       "Sotto un affresco silenzioso, le voci tornano a incontrarsi: letture, riconoscimenti, gratitudine.",
   },
   {
+    edition: "IV",
     year: "2022",
     src: "/images/edizioni/2022a.jpeg",
-    alt: "Foto di gruppo dei vincitori e della giuria, edizione 2022",
+    alt: "Foto di gruppo dei vincitori e della giuria, IV Edizione (2022)",
     description:
-      "Quarta edizione: i vincitori, la giuria, gli amici del Premio raccolti in una sola immagine.",
+      "I vincitori, la giuria, gli amici del Premio raccolti in una sola immagine.",
   },
   {
+    edition: "V",
     year: "2023",
     src: "/images/edizioni/2023.jpg",
-    alt: "Pubblico in sala durante la cerimonia del Concorso Mercurio 2023",
+    alt: "Pubblico in sala durante la cerimonia del Concorso Mercurio, V Edizione (2023)",
     description:
       "Una sala piena, attenta, partecipe. Il Premio diventa un appuntamento atteso della città.",
   },
   {
+    edition: "VI",
     year: "2024",
     src: "/images/edizioni/2024.jpg",
-    alt: "Lettura accompagnata dal contrabbasso, edizione 2024",
+    alt: "Lettura accompagnata dal contrabbasso, VI Edizione (2024)",
     description:
       "Parole e musica intrecciate: la letteratura incontra il suono del contrabbasso.",
+  },
+  {
+    edition: "VII",
+    year: "2025",
+    src: "/images/edizioni/2025.jpg",
+    alt: "Targa in cristallo del Premio Mercurio 2025, VII Edizione",
+    description:
+      "Il cristallo del Premio Mercurio 2025: una traccia luminosa, custode dei nomi e delle parole premiate.",
+  },
+  {
+    edition: "VIII",
+    year: "—",
+    alt: "VIII Edizione — in sviluppo",
+    description: "L'edizione in corso. Una nuova pagina, ancora da scrivere.",
+    placeholderText: "In sviluppo",
+    placeholderIcon: "sparkles",
   },
 ];
 
@@ -103,14 +130,13 @@ export function EdizioniCarousel() {
             <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
               <div className="flex">
                 {editions.map((e) => (
-                  <div key={e.year} className="shrink-0 grow-0 basis-full">
+                  <div key={e.edition} className="shrink-0 grow-0 basis-full">
                     <FeaturedCard edition={e} />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Arrows */}
             <button
               aria-label="Edizione precedente"
               onClick={() => emblaApi?.scrollPrev()}
@@ -131,30 +157,33 @@ export function EdizioniCarousel() {
           <aside className="lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[#4A2F24]/15 bg-[#F8EFE4]/70 p-7 sm:p-9">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-[#8A4B2F]">Edizione</p>
-              <p className="mt-2 font-display text-6xl sm:text-7xl text-[#3B2A22] tabular-nums leading-none">
-                {current.year}
+              <p className="mt-2 font-display text-6xl sm:text-7xl text-[#3B2A22] leading-none">
+                {current.edition}
+              </p>
+              <p className="mt-2 text-sm text-[#6E5A4E] tabular-nums tracking-wide">
+                {current.year !== "—" ? `Anno ${current.year}` : "Edizione in corso"}
               </p>
               <p className="mt-6 text-[#3B2A22]/85 leading-relaxed">{current.description}</p>
             </div>
 
-            {/* Year selector */}
+            {/* Edition selector */}
             <div className="mt-8 flex flex-wrap gap-2">
               {editions.map((e, i) => {
                 const active = i === selected;
                 return (
                   <button
-                    key={e.year}
+                    key={e.edition}
                     onClick={() => emblaApi?.scrollTo(i)}
-                    aria-label={`Vai all'edizione ${e.year}`}
+                    aria-label={`Vai alla ${e.edition} Edizione`}
                     aria-current={active}
                     className={
-                      "px-3.5 py-1.5 rounded-full text-sm font-medium tabular-nums transition border " +
+                      "px-3.5 py-1.5 rounded-full text-sm font-medium transition border " +
                       (active
                         ? "bg-[#4A2F24] text-[#FFF8EF] border-[#4A2F24]"
                         : "bg-transparent text-[#3B2A22] border-[#4A2F24]/30 hover:border-[#4A2F24]/70")
                     }
                   >
-                    {e.year}
+                    {e.edition}
                   </button>
                 );
               })}
@@ -167,6 +196,7 @@ export function EdizioniCarousel() {
 }
 
 function FeaturedCard({ edition }: { edition: Edition }) {
+  const Icon = edition.placeholderIcon === "sparkles" ? Sparkles : Feather;
   return (
     <figure className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-3xl border border-[#4A2F24]/15 bg-[var(--gradient-warm)] shadow-warm">
       {edition.src ? (
@@ -177,17 +207,27 @@ function FeaturedCard({ edition }: { edition: Edition }) {
             loading="lazy"
             className="h-full w-full object-cover"
           />
-          <figcaption className="absolute bottom-0 left-0 right-0 px-5 py-3 bg-gradient-to-t from-[#3B2A22]/85 via-[#3B2A22]/45 to-transparent text-[#FFF8EF] font-display text-lg sm:text-xl">
-            Edizione {edition.year}
+          <figcaption className="absolute bottom-0 left-0 right-0 px-5 py-3 bg-gradient-to-t from-[#3B2A22]/85 via-[#3B2A22]/45 to-transparent text-[#FFF8EF] font-display text-lg sm:text-xl flex items-baseline gap-3">
+            <span>{edition.edition} Edizione</span>
+            {edition.year !== "—" && (
+              <span className="text-sm font-sans tracking-wide text-[#FFF8EF]/75">
+                · {edition.year}
+              </span>
+            )}
           </figcaption>
         </>
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center text-center px-8">
           <div className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[#4A2F24]/25 text-[#8A4B2F]">
-            <Feather size={24} />
+            <Icon size={24} />
           </div>
-          <p className="font-display text-3xl sm:text-4xl text-[#3B2A22]">Edizione {edition.year}</p>
-          <p className="mt-2 text-[#6E5A4E] italic">Archivio fotografico in aggiornamento</p>
+          <p className="font-display text-3xl sm:text-4xl text-[#3B2A22]">
+            {edition.edition} Edizione
+          </p>
+          {edition.year !== "—" && (
+            <p className="mt-1 text-sm text-[#6E5A4E] tabular-nums">{edition.year}</p>
+          )}
+          <p className="mt-3 text-[#6E5A4E] italic">{edition.placeholderText}</p>
           <div aria-hidden className="mt-6 h-px w-24 bg-[#4A2F24]/20" />
         </div>
       )}
