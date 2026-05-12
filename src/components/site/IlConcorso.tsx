@@ -42,7 +42,7 @@ export function IlConcorso() {
           <div className="mt-8 space-y-5 text-foreground/75 text-lg leading-relaxed">
             <p>
               Il comitato Carta Penna Calamaio, anche quest'anno organizza il Concorso letterario
-              Mercurio, arrivato alla ottava edizione. Il concorso è riservato a tutti gli esercenti
+              Mercurio, arrivato alla VIII edizione. Il concorso è riservato a tutti gli esercenti
               le professioni sanitarie e animato da scopo benefico.
             </p>
             <p>
