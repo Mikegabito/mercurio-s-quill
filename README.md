@@ -77,7 +77,7 @@ src/
   routes/              file-based routing TanStack Start
   styles.css           design tokens (oklch) + Tailwind v4
 public/                asset statici
-index.html
+server.mjs             entry Node.js per produzione
 vite.config.ts
 ```
 
