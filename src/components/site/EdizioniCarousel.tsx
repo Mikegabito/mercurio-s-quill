@@ -1,24 +1,65 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, Feather } from "lucide-react";
 import { motion } from "framer-motion";
 import { Container } from "./Container";
 import { Section } from "./Section";
 
-const TOTAL = 20; // Easy to expand to ~100
-const photos = Array.from({ length: TOTAL }, (_, i) => {
-  const n = String(i + 1).padStart(2, "0");
-  return {
-    src: `/images/edizioni/edizione-${n}.jpg`,
-    alt: `Concorso Mercurio · momento dalle edizioni precedenti ${n}`,
-  };
-});
+type Edition = {
+  year: string;
+  src?: string;
+  alt: string;
+  description: string;
+};
+
+const editions: Edition[] = [
+  {
+    year: "2019",
+    src: "/images/edizioni/2019.jpeg",
+    alt: "Cerimonia di premiazione del Concorso Mercurio, edizione 2019",
+    description:
+      "Una sala storica, le targhe in fila, le parole dei vincitori. La voce del Premio prende forma.",
+  },
+  {
+    year: "2020",
+    alt: "Edizione 2020 — archivio fotografico in aggiornamento",
+    description: "Archivio fotografico in aggiornamento.",
+  },
+  {
+    year: "2021",
+    src: "/images/edizioni/2021.jpg",
+    alt: "Lettura e premiazione, edizione 2021 del Concorso Mercurio",
+    description:
+      "Sotto un affresco silenzioso, le voci tornano a incontrarsi: letture, riconoscimenti, gratitudine.",
+  },
+  {
+    year: "2022",
+    src: "/images/edizioni/2022a.jpeg",
+    alt: "Foto di gruppo dei vincitori e della giuria, edizione 2022",
+    description:
+      "Quarta edizione: i vincitori, la giuria, gli amici del Premio raccolti in una sola immagine.",
+  },
+  {
+    year: "2023",
+    src: "/images/edizioni/2023.jpg",
+    alt: "Pubblico in sala durante la cerimonia del Concorso Mercurio 2023",
+    description:
+      "Una sala piena, attenta, partecipe. Il Premio diventa un appuntamento atteso della città.",
+  },
+  {
+    year: "2024",
+    src: "/images/edizioni/2024.jpg",
+    alt: "Lettura accompagnata dal contrabbasso, edizione 2024",
+    description:
+      "Parole e musica intrecciate: la letteratura incontra il suono del contrabbasso.",
+  },
+];
 
 export function EdizioniCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start", containScroll: "trimSnaps" },
-    [Autoplay({ delay: 5500, stopOnInteraction: true })],
+    [Autoplay({ delay: 6500, stopOnInteraction: true })],
   );
   const [selected, setSelected] = useState(0);
 
@@ -34,6 +75,8 @@ export function EdizioniCarousel() {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
+  const current = editions[selected] ?? editions[0];
+
   return (
     <Section id="edizioni" className="bg-secondary/40">
       <Container>
@@ -42,82 +85,110 @@ export function EdizioniCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12"
+          className="max-w-3xl mb-12"
         >
-          <div className="max-w-2xl">
-            <p className="mb-4 text-xs uppercase tracking-[0.22em] text-primary">Archivio</p>
-            <h2 className="font-display text-4xl sm:text-5xl text-foreground text-balance">
-              Edizioni passate
-            </h2>
-            <p className="mt-4 text-foreground/70 text-lg leading-relaxed">
-              Immagini, premiazioni e momenti raccolti dalle precedenti edizioni del Concorso
-              Mercurio.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              aria-label="Foto precedente"
-              onClick={() => emblaApi?.scrollPrev()}
-              className="h-11 w-11 rounded-full border border-border bg-card hover:bg-accent/15 transition flex items-center justify-center"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              aria-label="Foto successiva"
-              onClick={() => emblaApi?.scrollNext()}
-              className="h-11 w-11 rounded-full border border-border bg-card hover:bg-accent/15 transition flex items-center justify-center"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
+          <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[#8A4B2F]">Archivio</p>
+          <h2 className="font-display text-4xl sm:text-5xl text-[#3B2A22] text-balance">
+            Edizioni passate
+          </h2>
+          <p className="mt-4 text-[#3B2A22]/80 text-lg leading-relaxed">
+            Le edizioni passate raccontano la storia viva del Premio Mercurio: cerimonie, letture,
+            incontri, applausi e momenti condivisi attorno alla parola.
+          </p>
         </motion.div>
 
-        <div className="overflow-hidden -mx-2" ref={emblaRef}>
-          <div className="flex">
-            {photos.map((p, i) => (
-              <div
-                key={p.src}
-                className="px-2 shrink-0 grow-0 basis-[85%] sm:basis-[55%] lg:basis-[40%]"
-              >
-                <PhotoCard src={p.src} alt={p.alt} index={i + 1} />
+        {/* Featured carousel */}
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-10 items-stretch">
+          <div className="lg:col-span-8 relative">
+            <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
+              <div className="flex">
+                {editions.map((e) => (
+                  <div key={e.year} className="shrink-0 grow-0 basis-full">
+                    <FeaturedCard edition={e} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        <div className="mt-8 flex items-center justify-between">
-          <p className="text-sm text-foreground/55 italic">Archivio fotografico in aggiornamento.</p>
-          <p className="font-display text-foreground/70 tabular-nums">
-            {String(selected + 1).padStart(2, "0")}{" "}
-            <span className="text-foreground/40">/ {String(TOTAL).padStart(2, "0")}</span>
-          </p>
+            {/* Arrows */}
+            <button
+              aria-label="Edizione precedente"
+              onClick={() => emblaApi?.scrollPrev()}
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-[#F8EFE4]/95 border border-[#4A2F24]/20 text-[#3B2A22] shadow-warm hover:bg-[#F8EFE4] transition flex items-center justify-center"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              aria-label="Edizione successiva"
+              onClick={() => emblaApi?.scrollNext()}
+              className="absolute right-3 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-[#F8EFE4]/95 border border-[#4A2F24]/20 text-[#3B2A22] shadow-warm hover:bg-[#F8EFE4] transition flex items-center justify-center"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Side info */}
+          <aside className="lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[#4A2F24]/15 bg-[#F8EFE4]/70 p-7 sm:p-9">
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-[#8A4B2F]">Edizione</p>
+              <p className="mt-2 font-display text-6xl sm:text-7xl text-[#3B2A22] tabular-nums leading-none">
+                {current.year}
+              </p>
+              <p className="mt-6 text-[#3B2A22]/85 leading-relaxed">{current.description}</p>
+            </div>
+
+            {/* Year selector */}
+            <div className="mt-8 flex flex-wrap gap-2">
+              {editions.map((e, i) => {
+                const active = i === selected;
+                return (
+                  <button
+                    key={e.year}
+                    onClick={() => emblaApi?.scrollTo(i)}
+                    aria-label={`Vai all'edizione ${e.year}`}
+                    aria-current={active}
+                    className={
+                      "px-3.5 py-1.5 rounded-full text-sm font-medium tabular-nums transition border " +
+                      (active
+                        ? "bg-[#4A2F24] text-[#FFF8EF] border-[#4A2F24]"
+                        : "bg-transparent text-[#3B2A22] border-[#4A2F24]/30 hover:border-[#4A2F24]/70")
+                    }
+                  >
+                    {e.year}
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
         </div>
       </Container>
     </Section>
   );
 }
 
-function PhotoCard({ src, alt, index }: { src: string; alt: string; index: number }) {
-  const [errored, setErrored] = useState(false);
-
+function FeaturedCard({ edition }: { edition: Edition }) {
   return (
-    <figure className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-[var(--gradient-warm)] shadow-warm">
-      {!errored ? (
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          onError={() => setErrored(true)}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-        />
+    <figure className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-3xl border border-[#4A2F24]/15 bg-[var(--gradient-warm)] shadow-warm">
+      {edition.src ? (
+        <>
+          <img
+            src={edition.src}
+            alt={edition.alt}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+          <figcaption className="absolute bottom-0 left-0 right-0 px-5 py-3 bg-gradient-to-t from-[#3B2A22]/85 via-[#3B2A22]/45 to-transparent text-[#FFF8EF] font-display text-lg sm:text-xl">
+            Edizione {edition.year}
+          </figcaption>
+        </>
       ) : (
-        <div className="flex h-full w-full flex-col items-center justify-center text-center px-6">
-          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gradient-gold)] text-primary-foreground">
-            <ImageIcon size={20} />
+        <div className="flex h-full w-full flex-col items-center justify-center text-center px-8">
+          <div className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[#4A2F24]/25 text-[#8A4B2F]">
+            <Feather size={24} />
           </div>
-          <p className="font-display text-2xl text-foreground/80">Edizione {index}</p>
-          <p className="mt-1 text-sm text-foreground/55 italic">Foto in arrivo</p>
+          <p className="font-display text-3xl sm:text-4xl text-[#3B2A22]">Edizione {edition.year}</p>
+          <p className="mt-2 text-[#6E5A4E] italic">Archivio fotografico in aggiornamento</p>
+          <div aria-hidden className="mt-6 h-px w-24 bg-[#4A2F24]/20" />
         </div>
       )}
     </figure>

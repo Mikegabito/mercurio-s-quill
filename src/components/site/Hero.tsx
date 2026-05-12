@@ -33,9 +33,9 @@ export function Hero() {
             <span className="italic text-primary">per la parola</span> che cura.
           </h1>
 
-          <p className="mt-7 max-w-xl text-pretty text-lg text-foreground/75 leading-relaxed">
-            Concorso Mercurio invita chi esercita una professione sanitaria a trasformare
-            esperienza, ascolto e memoria in poesia e narrativa.
+          <p className="mt-7 max-w-xl text-pretty text-lg sm:text-xl text-[#3B2A22] leading-relaxed">
+            Concorso Mercurio invita tutti coloro che esercitano una professione sanitaria a
+            trasformare esperienza, ascolto e memoria in poesia e narrativa.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
