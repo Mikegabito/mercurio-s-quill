@@ -40,7 +40,30 @@ bun run build    # build di produzione
 npm install      # installa le dipendenze
 npm run dev      # avvia il dev server
 npm run build    # build di produzione
+npm run start    # avvia il server Node.js in produzione (porta 3000)
 ```
+
+---
+
+## Deploy su Node.js (Hostinger / VPS / generico)
+
+Il progetto è configurato per girare come **server Node.js** (target `node-server`) e include un piccolo entry `server.mjs` che adatta l'handler `fetch` di TanStack Start a un server HTTP Node tramite `@hono/node-server`.
+
+```bash
+npm install
+npm run build      # genera dist/client e dist/server
+npm run start      # avvia node server.mjs (PORT=3000 di default)
+```
+
+Su Hostinger Node.js:
+- **Application root**: cartella del progetto
+- **Application URL**: dominio configurato
+- **Application startup file**: `server.mjs`
+- **Node.js version**: ≥ 20
+- Variabili d'ambiente opzionali: `PORT`, `HOST` (default `0.0.0.0`)
+
+Eseguire `npm install` e `npm run build` prima di avviare l'app dal pannello.
+
 
 ---
 
@@ -54,7 +77,7 @@ src/
   routes/              file-based routing TanStack Start
   styles.css           design tokens (oklch) + Tailwind v4
 public/                asset statici
-index.html
+server.mjs             entry Node.js per produzione
 vite.config.ts
 ```
 
