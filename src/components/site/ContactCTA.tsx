@@ -37,12 +37,12 @@ export function ContactCTA() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="mailto:[INSERIRE EMAIL]" variant="primary">
+                <Button href="mailto:comitato.cartapennacalamaio@gmail.it" variant="primary">
                   <Mail size={16} />
                   Scrivi al comitato
                 </Button>
                 <Button
-                  href="https://instagram.com/[INSERIRE PROFILO]"
+                  href="https://www.instagram.com/concorsomercurio/"
                   variant="secondary"
                   rel="noopener noreferrer"
                   target="_blank"
@@ -58,20 +58,20 @@ export function ContactCTA() {
               <ContactRow
                 icon={<Mail size={18} />}
                 label="Email"
-                value="[INSERIRE EMAIL]"
-                href="mailto:[INSERIRE EMAIL]"
+                value="comitato.cartapennacalamaio@gmail.it"
+                href="mailto:comitato.cartapennacalamaio@gmail.it"
               />
               <ContactRow
                 icon={<Phone size={18} />}
                 label="Telefono"
-                value="[INSERIRE TELEFONO]"
-                href="tel:[INSERIRE TELEFONO]"
+                value="+39 328 5649213"
+                href="tel:+393285649213"
               />
               <ContactRow
                 icon={<Instagram size={18} />}
                 label="Instagram"
-                value="[INSERIRE PROFILO]"
-                href="https://instagram.com/[INSERIRE PROFILO]"
+                value="@concorsomercurio"
+                href="https://www.instagram.com/concorsomercurio/"
               />
             </ul>
           </div>
