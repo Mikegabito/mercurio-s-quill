@@ -23,7 +23,7 @@ export function Hero() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7"
         >
-          <p className="mb-6 inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-primary">
+          <p className="mb-6 inline-flex items-center gap-3 uppercase tracking-[0.22em] text-primary text-xl">
             <span className="h-px w-8 bg-primary/60" />
             VIII edizione · Concorso letterario
           </p>
