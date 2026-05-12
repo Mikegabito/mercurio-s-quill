@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 import { Container } from "./Container";
 import { Button } from "./Button";
 import mercurio from "@/assets/mercurio.jpg";
-import logoCpc from "@/assets/logo-cpc.png";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-10 pb-20 sm:pt-16 sm:pb-28">
+    <section id="top" className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
       {/* warm radial glow */}
       <div
         aria-hidden
@@ -24,45 +23,20 @@ export function Hero() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7"
         >
-          {/* Institutional logo + edition label */}
-          <div className="mb-8 flex items-center gap-5">
-            <img
-              src={logoCpc}
-              alt="Logo Carta Penna Calamaio"
-              width={72}
-              height={72}
-              className="h-16 w-16 sm:h-20 sm:w-20 object-contain shrink-0"
-            />
-            <div className="flex flex-col">
-              <span className="font-display text-3xl sm:text-4xl text-[#3B2A22] leading-none tracking-tight">
-                <span className="tracking-[0.04em]">VIII</span>{" "}
-                <span className="italic text-[#8A4B2F]">Edizione</span>
-              </span>
-              <span className="mt-2 text-[11px] sm:text-xs uppercase tracking-[0.28em] text-[#8A4B2F]/90">
-                Concorso Letterario
-              </span>
-            </div>
-          </div>
+          <p className="mb-6 inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-primary">
+            <span className="h-px w-8 bg-primary/60" />
+            VIII edizione · Concorso letterario
+          </p>
 
           <h1 className="font-display text-balance text-5xl sm:text-6xl lg:text-7xl leading-[1.02] text-foreground">
             Una stanza luminosa <br className="hidden sm:block" />
             <span className="italic text-primary">per la parola</span> che cura.
           </h1>
 
-          <div className="mt-7 max-w-xl space-y-4 text-pretty text-base sm:text-lg text-[#3B2A22] leading-[1.75]">
-            <p>
-              Il comitato Carta Penna Calamaio, anche quest'anno organizza il Concorso letterario
-              Mercurio, arrivato alla VIII Edizione. Il concorso è riservato a tutti gli esercenti
-              le professioni sanitarie e animato da scopo benefico.
-            </p>
-            <p>
-              Il concorso segue il classico schema dei concorsi letterari con distinzione a
-              categorie, poesia e narrativa, a tema libero non scientifico, facendo riferimento a
-              una giuria appositamente designata. Il ricavato dalle quote di partecipazione verrà,
-              quest'anno, devoluto all'Associazione{" "}
-              <span className="italic text-[#8A4B2F]">[INSERIRE ASSOCIAZIONE BENEFICIARIA]</span>.
-            </p>
-          </div>
+          <p className="mt-7 max-w-xl text-pretty text-lg sm:text-xl text-[#3B2A22] leading-relaxed">
+            Concorso Mercurio invita tutti coloro che esercitano una professione sanitaria a
+            trasformare esperienza, ascolto e memoria in poesia e narrativa.
+          </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href="#contatti" variant="primary">
