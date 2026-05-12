@@ -1,88 +1,47 @@
 # Concorso Mercurio
 
-Sito ufficiale del **Concorso letterario Mercurio**, organizzato dal comitato *Carta Penna Calamaio*. Il concorso, giunto alla VIII edizione, è riservato a tutti gli esercenti le professioni sanitarie ed è animato da scopo benefico.
+Sito ufficiale del **Concorso letterario Mercurio**, organizzato dal comitato *Carta Penna Calamaio* — VIII Edizione.
 
-Costruito con **TanStack Start**, **React 19**, **Vite 7** e **Tailwind CSS v4**.
+> **Per il deploy su Hostinger (PHP/HTML) usa la cartella [`public_html/`](./public_html/).**
+> Contiene la versione **statica** del sito (HTML + CSS + JS), pronta da caricare nella `public_html` del tuo hosting. Nessun Node.js, nessuna build, nessun server richiesto.
 
----
+## Deploy rapido su Hostinger
 
-## Requisiti
+1. Apri la cartella `public_html/` di questo repository.
+2. Carica `index.html`, `favicon.ico` e la cartella `assets/` dentro `public_html/` su Hostinger (File Manager o FTP).
+3. Apri https://concorsomercurio.it/ — il sito è online.
 
-- Node.js ≥ 20
-- [Bun](https://bun.sh) (consigliato) **oppure** npm
+Vedi [`public_html/README.md`](./public_html/README.md) per dettagli, struttura, test locale e placeholder da sostituire.
 
-> Bun è il package manager preferito di questo repository (sono presenti `bunfig.toml` e `bun.lock`), ma il progetto può essere installato e avviato anche con npm.
-
----
-
-## Clonare il repository
+## Test locale del sito statico
 
 ```bash
-git clone <repository-url>
-cd mercurio-s-quill
+cd public_html
+python3 -m http.server 8080
+# apri http://localhost:8080
 ```
 
----
-
-## Setup con Bun (consigliato)
-
-```bash
-bun install      # installa le dipendenze
-bun run dev      # avvia il dev server
-bun run build    # build di produzione
-```
-
----
-
-## Setup con npm (alternativa)
-
-```bash
-npm install      # installa le dipendenze
-npm run dev      # avvia il dev server
-npm run build    # build di produzione
-npm run start    # avvia il server Node.js in produzione (porta 3000)
-```
-
----
-
-## Deploy su Node.js (Hostinger / VPS / generico)
-
-Il progetto è configurato per girare come **server Node.js** (target `node-server`) e include un piccolo entry `server.mjs` che adatta l'handler `fetch` di TanStack Start a un server HTTP Node tramite `@hono/node-server`.
-
-```bash
-npm install
-npm run build      # genera dist/client e dist/server
-npm run start      # avvia node server.mjs (PORT=3000 di default)
-```
-
-Su Hostinger Node.js:
-- **Application root**: cartella del progetto
-- **Application URL**: dominio configurato
-- **Application startup file**: `server.mjs`
-- **Node.js version**: ≥ 20
-- Variabili d'ambiente opzionali: `PORT`, `HOST` (default `0.0.0.0`)
-
-Eseguire `npm install` e `npm run build` prima di avviare l'app dal pannello.
-
-
----
-
-## Struttura del progetto
+## Struttura del repository
 
 ```
-src/
-  assets/              immagini e logo
-  components/site/     sezioni della landing (Hero, IlConcorso, …)
-  components/ui/       componenti shadcn/ui
-  routes/              file-based routing TanStack Start
-  styles.css           design tokens (oklch) + Tailwind v4
-public/                asset statici
-server.mjs             entry Node.js per produzione
-vite.config.ts
+public_html/         ← sito statico pronto per Hostinger (DEPLOY)
+  index.html
+  favicon.ico
+  assets/css/style.css
+  assets/js/main.js
+  assets/images/...
+  README.md
+
+src/, vite.config.ts, package.json, ...
+                     ← progetto TanStack/React originale, usato solo
+                       per l'editor live di Lovable (NON serve in produzione)
 ```
 
----
+## Placeholder da sostituire
 
-## Deploy
+- `[INSERIRE EMAIL]`
+- `[INSERIRE TELEFONO]`
+- `[INSERIRE PROFILO]` (Instagram)
+- `[INSERIRE ASSOCIAZIONE BENEFICIARIA]`
 
-Il sito è pubblicato tramite Lovable. Le modifiche al frontend vanno in produzione cliccando **Publish → Update** nell'editor Lovable.
+Cercare nel codice di `public_html/index.html` e sostituire con i dati reali.
