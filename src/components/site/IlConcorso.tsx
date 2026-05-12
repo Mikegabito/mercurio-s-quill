@@ -36,7 +36,7 @@ export function IlConcorso() {
           <p className="mb-5 text-xs uppercase tracking-[0.22em] text-primary">Il concorso</p>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-foreground text-balance">
             Il comitato <span className="italic">Carta Penna Calamaio</span>
-            <br className="hidden sm:block" /> torna con l'ottava edizione.
+            <br className="hidden sm:block" /> torna con la VIII edizione.
           </h2>
 
           <div className="mt-8 space-y-5 text-foreground/75 text-lg leading-relaxed">
