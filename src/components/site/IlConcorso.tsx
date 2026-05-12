@@ -36,13 +36,13 @@ export function IlConcorso() {
           <p className="mb-5 text-xs uppercase tracking-[0.22em] text-primary">Il concorso</p>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-foreground text-balance">
             Il comitato <span className="italic">Carta Penna Calamaio</span>
-            <br className="hidden sm:block" /> torna con l'ottava edizione.
+            <br className="hidden sm:block" /> torna con la VIII edizione.
           </h2>
 
           <div className="mt-8 space-y-5 text-foreground/75 text-lg leading-relaxed">
             <p>
               Il comitato Carta Penna Calamaio, anche quest'anno organizza il Concorso letterario
-              Mercurio, arrivato alla ottava edizione. Il concorso è riservato a tutti gli esercenti
+              Mercurio, arrivato alla VIII edizione. Il concorso è riservato a tutti gli esercenti
               le professioni sanitarie e animato da scopo benefico.
             </p>
             <p>
