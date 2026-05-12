@@ -39,9 +39,9 @@ src/, vite.config.ts, package.json, ...
 
 ## Placeholder da sostituire
 
-- `[INSERIRE EMAIL]`
-- `[INSERIRE TELEFONO]`
-- `[INSERIRE PROFILO]` (Instagram)
+- `comitato.cartapennacalamaio@gmail.it`
+- `+39 328 5649213`
+- `@concorsomercurio` (Instagram)
 - `[INSERIRE ASSOCIAZIONE BENEFICIARIA]`
 
 Cercare nel codice di `public_html/index.html` e sostituire con i dati reali.

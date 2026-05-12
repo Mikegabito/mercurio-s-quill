@@ -41,9 +41,9 @@ python3 -m http.server 8080
 
 Cercare nel codice e sostituire con i dati reali:
 
-- `[INSERIRE EMAIL]` — email del comitato
-- `[INSERIRE TELEFONO]` — recapito telefonico
-- `[INSERIRE PROFILO]` — handle Instagram
+- `comitato.cartapennacalamaio@gmail.it` — email del comitato
+- `+39 328 5649213` — recapito telefonico
+- `@concorsomercurio` — handle Instagram
 - `[INSERIRE ASSOCIAZIONE BENEFICIARIA]` — associazione destinataria del ricavato
 - Foto mancante per la **II Edizione (2020)** — aggiungere `assets/images/edizioni/2020.jpg` e aggiornare l'oggetto corrispondente in `assets/js/main.js`.
 
