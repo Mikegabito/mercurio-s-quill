@@ -1,41 +1,34 @@
-# Plan — Carousel, VII Edizione, Footer
+# Plan — Logo Carta Penna Calamaio nella sezione "Il Concorso"
 
-## 1. Add 2025 trophy asset
-- Copy `user-uploads://Franca_Mercurio23-2.jpg` → `public/images/edizioni/2025.jpg`.
+## Obiettivo
+Aggiungere il logo **Carta Penna Calamaio** nella sezione `Il Concorso`, presentato con la stessa cura visiva riservata al dipinto di Mercurio nell'Hero (cornice morbida, ombra calda, leggera animazione di galleggiamento, didascalia poetica).
 
-## 2. Rework `EdizioniCarousel.tsx`
-Update the `editions` array to 8 entries with `edition` (roman) + `year` + optional `src`:
+## Passi
 
-| # | Edition | Year | Image |
-|---|---------|------|-------|
-| 1 | I | 2019 | 2019.jpeg |
-| 2 | II | 2020 | placeholder ("Archivio fotografico in aggiornamento") |
-| 3 | III | 2021 | 2021.jpg |
-| 4 | IV | 2022 | 2022a.jpeg |
-| 5 | V | 2023 | 2023.jpg |
-| 6 | VI | 2024 | 2024.jpg |
-| 7 | VII | 2025 | 2025.jpg (new trophy) |
-| 8 | VIII | — | placeholder ("In sviluppo") |
+### 1. Asset
+- Copiare `user-uploads://logocartapenna.png` → `src/assets/carta-penna-calamaio.png`.
+- Importarlo come ES module in `IlConcorso.tsx`.
 
-Changes:
-- Featured caption shows `{edition} Edizione` prominently with `{year}` smaller below.
-- Side panel: large roman numeral as display, smaller year subline, refreshed description per slide.
-- Year-selector pills become edition-selector pills showing roman numerals (`I…VIII`); accessible labels keep year context.
-- Placeholder card branch handles both 2020 ("Archivio fotografico in aggiornamento") and VIII ("In sviluppo") via the missing-`src` path with custom subtitle.
-- Keep `object-cover` + `aspect-[16/10]` so vertical 2025 trophy crops cleanly; add `object-position: center` so the trophy stays centered. (Optionally use `object-contain` with warm gradient bg for the portrait trophy slide so it isn't cropped — recommended.)
-- Intro paragraph already matches requested copy; keep as-is.
+### 2. Layout di `IlConcorso.tsx`
+Trasformare il blocco testuale attuale (oggi `max-w-3xl` su singola colonna) in una griglia a 12 colonne come l'Hero:
 
-## 3. Update `Footer.tsx`
-Add a credit line below the copyright:
+- **lg:col-span-7** → testo (eyebrow "Il concorso", H2, paragrafi).
+- **lg:col-span-5** → figura del logo:
+  - cornice tonda/morbida coerente con la palette (`bg-[var(--gradient-warm)]`, `shadow-warm`, `border-accent/30`).
+  - Il logo è già su sfondo bianco con cerchio rosso → mostrarlo dentro un cerchio crema (`rounded-full` o `rounded-[2rem]`) con padding generoso così respira; `object-contain`, `max-w-sm` centrato.
+  - Animazione `motion.figure` con leggero `y: [0, -8, 0]` (più discreto del Mercurio, per non competere).
+  - `figcaption` italica: *"Carta Penna Calamaio — il comitato che dà voce al Premio."*
+- Su mobile il logo appare sotto il testo, ridotto (~`max-w-[220px]`).
 
-```
-Designed by <a href="https://yaideacloudltd.com/" target="_blank" rel="noopener noreferrer">Yaidea Cloud Ltd®</a>
-```
+Le tre `WarmGlassCard` (Per chi / Categorie / Finalità) restano invariate sotto la griglia.
 
-Style: same `text-xs text-foreground/40`, link uses `text-[#8A4B2F] hover:text-[#4A2F24] underline-offset-4 hover:underline transition`. Quiet, single line, centered with the rest.
+### 3. Accessibilità & SEO
+- `alt="Logo del comitato Carta Penna Calamaio: piuma, calamaio e monogramma CPC"`.
+- `loading="lazy"`, dimensioni intrinseche.
 
-## 4. Quietly fix hydration mismatch
-`Hero.tsx` currently triggers a SSR/client class mismatch (runtime error log). No change requested by user that conflicts; ensure padding classes are stable (already `pt-12 pb-20 sm:pt-20 sm:pb-28`). Verify no `_app` route or stale SSR cache — restart dev server if mismatch persists after the edits above.
+### 4. Fix silenzioso hydration
+Tag `<br>` dentro `<h2>` resta valido; il mismatch nei log riguarda l'estensione browser Lovable (`data-lov-*`). Nessuna modifica necessaria.
 
 ## Out of scope
-No changes to Hero copy, Navbar, IlConcorso, VideoCarousel, ContactCTA, design tokens, or routing.
+- Nessuna modifica a Hero, Navbar, Footer, Carosello, Video, ContactCTA o token di design.
+- Nessun cambio di copy nei paragrafi esistenti.
