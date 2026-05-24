@@ -81,6 +81,7 @@ sono pubblicati sulla landing page: sono indicati esclusivamente nel
 - **Stili & colori:** `assets/css/style.css`
 - **Carosello edizioni & video:** `assets/js/main.js`
 - **Bando aggiornato:** sostituire `assets/documents/bando-2026.pdf`
-- **Logo ABE:** sostituire `assets/images/logo-abe.png`
-- **Foto edizioni future:** aggiungere in `assets/images/carousel/` o
-  `assets/images/edizioni/` e aggiornare l'array `editions` in `assets/js/main.js`
+- **Logo ABE:** sostituire `assets/images/logos/logo-abe.png`
+- **Foto edizioni future:** aggiungere i file dentro la cartella della relativa edizione
+  in `assets/images/carousel/<N>-Edizione/` e listare i nomi file nell'array
+  `carouselImages` di `assets/js/main.js` (campo `images`).
