@@ -45,7 +45,7 @@ Apri direttamente `index.html` nel browser e il sito funziona.
    (la radice del tuo dominio).
 4. Verifica che esistano:
    - `assets/documents/bando-2026.pdf`
-   - `assets/images/logo-abe.png`
+   - `assets/images/logos/logo-abe.png`
 5. Apri https://concorsomercurio.it/ — il sito è online.
 
 Non serve `npm install`, `npm run build`, `bun install` o alcun build step:
