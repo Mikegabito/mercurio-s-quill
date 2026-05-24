@@ -17,16 +17,46 @@
   }
 
   // EDIZIONI CAROUSEL
-  var editions = [
-    { edition: "I", year: "2019", src: "assets/images/edizioni/2019.jpeg", alt: "Cerimonia di premiazione del Concorso Mercurio, I Edizione (2019)", description: "Una sala storica, le targhe in fila, le parole dei vincitori. La voce del Premio prende forma." },
-    { edition: "II", year: "2020", alt: "II Edizione (2020) — archivio fotografico in aggiornamento", description: "Un'edizione discreta, vissuta in un tempo sospeso. Le immagini sono ancora in attesa di essere raccolte.", placeholderText: "Archivio fotografico in aggiornamento", placeholderIcon: "✎" },
-    { edition: "III", year: "2021", src: "assets/images/edizioni/2021.jpg", alt: "Lettura e premiazione, III Edizione del Concorso Mercurio (2021)", description: "Sotto un affresco silenzioso, le voci tornano a incontrarsi: letture, riconoscimenti, gratitudine." },
-    { edition: "IV", year: "2022", src: "assets/images/edizioni/2022a.jpeg", alt: "Foto di gruppo dei vincitori e della giuria, IV Edizione (2022)", description: "I vincitori, la giuria, gli amici del Premio raccolti in una sola immagine." },
-    { edition: "V", year: "2023", src: "assets/images/edizioni/2023.jpg", alt: "Pubblico in sala durante la cerimonia del Concorso Mercurio, V Edizione (2023)", description: "Una sala piena, attenta, partecipe. Il Premio diventa un appuntamento atteso della città." },
-    { edition: "VI", year: "2024", src: "assets/images/edizioni/2024.jpg", alt: "Lettura accompagnata dal contrabbasso, VI Edizione (2024)", description: "Parole e musica intrecciate: la letteratura incontra il suono del contrabbasso." },
-    { edition: "VII", year: "2025", src: "assets/images/edizioni/2025.jpg", alt: "Targa di cristallo Mercurio 2025 con il logo Carta Penna Calamaio", description: "La targa di cristallo della VII Edizione: un riconoscimento prezioso a chi ha saputo trasformare la cura in parola.", fit: "contain" },
-    { edition: "VIII", alt: "VIII Edizione — in sviluppo", description: "La nuova edizione sta nascendo. Presto nuove voci, nuove storie, nuovi incontri.", placeholderText: "In sviluppo", placeholderIcon: "✦" }
+  // To add new photos: drop image files into the corresponding folder and list their filenames in `images`.
+  var carouselImages = [
+    { label: "I Edizione",    folder: "assets/images/carousel/I-Edizione/",    images: ["2019.jpeg"] },
+    { label: "II Edizione",   folder: "assets/images/carousel/II-Edizione/",   images: [] },
+    { label: "III Edizione",  folder: "assets/images/carousel/III-Edizione/",  images: ["2021.jpg"] },
+    { label: "IV Edizione",   folder: "assets/images/carousel/IV-Edizione/",   images: ["2022a.jpeg"] },
+    { label: "V Edizione",    folder: "assets/images/carousel/V-Edizione/",    images: ["2023.jpg"] },
+    { label: "VI Edizione",   folder: "assets/images/carousel/VI-Edizione/",   images: ["2024.jpg"] },
+    { label: "VII Edizione",  folder: "assets/images/carousel/VII-Edizione/",  images: ["2025.jpg"] },
+    { label: "VIII Edizione", folder: "assets/images/carousel/VIII-Edizione/", images: [] }
   ];
+
+  var editionsMeta = {
+    "I Edizione":    { year: "2019", alt: "Cerimonia di premiazione del Concorso Mercurio, I Edizione (2019)", description: "Una sala storica, le targhe in fila, le parole dei vincitori. La voce del Premio prende forma." },
+    "II Edizione":   { year: "2020", alt: "II Edizione (2020) — archivio fotografico in aggiornamento", description: "Un'edizione discreta, vissuta in un tempo sospeso. Le immagini sono ancora in attesa di essere raccolte.", placeholderText: "Archivio fotografico in aggiornamento", placeholderIcon: "✎" },
+    "III Edizione":  { year: "2021", alt: "Lettura e premiazione, III Edizione del Concorso Mercurio (2021)", description: "Sotto un affresco silenzioso, le voci tornano a incontrarsi: letture, riconoscimenti, gratitudine." },
+    "IV Edizione":   { year: "2022", alt: "Foto di gruppo dei vincitori e della giuria, IV Edizione (2022)", description: "I vincitori, la giuria, gli amici del Premio raccolti in una sola immagine." },
+    "V Edizione":    { year: "2023", alt: "Pubblico in sala durante la cerimonia del Concorso Mercurio, V Edizione (2023)", description: "Una sala piena, attenta, partecipe. Il Premio diventa un appuntamento atteso della città." },
+    "VI Edizione":   { year: "2024", alt: "Lettura accompagnata dal contrabbasso, VI Edizione (2024)", description: "Parole e musica intrecciate: la letteratura incontra il suono del contrabbasso." },
+    "VII Edizione":  { year: "2025", alt: "Targa di cristallo Mercurio 2025 con il logo Carta Penna Calamaio", description: "La targa di cristallo della VII Edizione: un riconoscimento prezioso a chi ha saputo trasformare la cura in parola.", fit: "contain" },
+    "VIII Edizione": { alt: "VIII Edizione — in sviluppo", description: "La nuova edizione sta nascendo. Presto nuove voci, nuove storie, nuovi incontri.", placeholderText: "In sviluppo", placeholderIcon: "✦" }
+  };
+
+  var romanFromLabel = function (label) { return label.split(" ")[0]; };
+
+  var editions = carouselImages.map(function (group) {
+    var meta = editionsMeta[group.label] || {};
+    var first = group.images && group.images.length ? group.folder + group.images[0] : null;
+    return {
+      edition: romanFromLabel(group.label),
+      label: group.label,
+      year: meta.year,
+      src: first,
+      alt: meta.alt || group.label,
+      description: meta.description || "",
+      placeholderText: meta.placeholderText,
+      placeholderIcon: meta.placeholderIcon,
+      fit: meta.fit
+    };
+  });
 
   var track = document.getElementById("edizioniTrack");
   var dotsEl = document.getElementById("edDots");
