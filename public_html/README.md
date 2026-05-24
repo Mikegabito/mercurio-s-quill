@@ -18,10 +18,20 @@ Apri direttamente `index.html` nel browser e il sito funziona.
 │   ├── js/
 │   │   └── main.js
 │   ├── images/
-│   │   ├── mercurio.jpg
-│   │   ├── carta-penna-calamaio.png
-│   │   ├── logo-abe.png
-│   │   └── edizioni/   (foto delle edizioni passate)
+│   │   ├── logos/
+│   │   │   ├── logo-abe.png
+│   │   │   └── carta-penna-calamaio.png
+│   │   ├── mercurio/
+│   │   │   └── mercury-artwork.jpg
+│   │   └── carousel/
+│   │       ├── I-Edizione/
+│   │       ├── II-Edizione/
+│   │       ├── III-Edizione/
+│   │       ├── IV-Edizione/
+│   │       ├── V-Edizione/
+│   │       ├── VI-Edizione/
+│   │       ├── VII-Edizione/
+│   │       └── VIII-Edizione/
 │   └── documents/
 │       └── bando-2026.pdf
 └── README.md
