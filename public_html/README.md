@@ -18,10 +18,20 @@ Apri direttamente `index.html` nel browser e il sito funziona.
 │   ├── js/
 │   │   └── main.js
 │   ├── images/
-│   │   ├── mercurio.jpg
-│   │   ├── carta-penna-calamaio.png
-│   │   ├── logo-abe.png
-│   │   └── edizioni/   (foto delle edizioni passate)
+│   │   ├── logos/
+│   │   │   ├── logo-abe.png
+│   │   │   └── carta-penna-calamaio.png
+│   │   ├── mercurio/
+│   │   │   └── mercury-artwork.jpg
+│   │   └── carousel/
+│   │       ├── I-Edizione/
+│   │       ├── II-Edizione/
+│   │       ├── III-Edizione/
+│   │       ├── IV-Edizione/
+│   │       ├── V-Edizione/
+│   │       ├── VI-Edizione/
+│   │       ├── VII-Edizione/
+│   │       └── VIII-Edizione/
 │   └── documents/
 │       └── bando-2026.pdf
 └── README.md
@@ -35,7 +45,7 @@ Apri direttamente `index.html` nel browser e il sito funziona.
    (la radice del tuo dominio).
 4. Verifica che esistano:
    - `assets/documents/bando-2026.pdf`
-   - `assets/images/logo-abe.png`
+   - `assets/images/logos/logo-abe.png`
 5. Apri https://concorsomercurio.it/ — il sito è online.
 
 Non serve `npm install`, `npm run build`, `bun install` o alcun build step:
@@ -71,6 +81,7 @@ sono pubblicati sulla landing page: sono indicati esclusivamente nel
 - **Stili & colori:** `assets/css/style.css`
 - **Carosello edizioni & video:** `assets/js/main.js`
 - **Bando aggiornato:** sostituire `assets/documents/bando-2026.pdf`
-- **Logo ABE:** sostituire `assets/images/logo-abe.png`
-- **Foto edizioni future:** aggiungere in `assets/images/carousel/` o
-  `assets/images/edizioni/` e aggiornare l'array `editions` in `assets/js/main.js`
+- **Logo ABE:** sostituire `assets/images/logos/logo-abe.png`
+- **Foto edizioni future:** aggiungere i file dentro la cartella della relativa edizione
+  in `assets/images/carousel/<N>-Edizione/` e listare i nomi file nell'array
+  `carouselImages` di `assets/js/main.js` (campo `images`).
