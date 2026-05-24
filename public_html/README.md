@@ -1,59 +1,76 @@
-# Concorso Mercurio — Sito statico (Hostinger PHP/HTML)
+# Concorso Mercurio — VIII Edizione 2026 (Hostinger PHP/HTML)
 
-Versione **statica** del sito del Concorso letterario Mercurio (VIII Edizione), pronta per essere caricata su Hostinger nella cartella `public_html` con l'opzione PHP/HTML (nessun Node.js richiesto).
+Sito statico ufficiale del Concorso letterario **Mercurio · VIII Edizione 2026**,
+pronto per essere caricato su Hostinger nella cartella `public_html` con
+l'opzione **PHP/HTML** (nessun Node.js, nessun build, nessun server richiesto).
+
+Apri direttamente `index.html` nel browser e il sito funziona.
 
 ## Struttura
 
 ```
-public_html/
+/
 ├── index.html
 ├── favicon.ico
 ├── assets/
-│   ├── css/style.css
-│   ├── js/main.js
-│   └── images/
-│       ├── mercurio.jpg
-│       ├── carta-penna-calamaio.png
-│       └── edizioni/   (foto delle edizioni passate)
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   ├── images/
+│   │   ├── mercurio.jpg
+│   │   ├── carta-penna-calamaio.png
+│   │   ├── logo-abe.png
+│   │   └── edizioni/   (foto delle edizioni passate)
+│   └── documents/
+│       └── bando-2026.pdf
 └── README.md
 ```
 
 ## Deploy su Hostinger (PHP/HTML)
 
-1. Scarica/esporta tutto il contenuto della cartella `public_html/` di questo repository.
-2. Accedi al **File Manager** di Hostinger (o usa FTP).
-3. Carica `index.html`, `favicon.ico` e l'intera cartella `assets/` dentro `public_html/` (la radice del tuo dominio).
-4. Apri https://concorsomercurio.it/ — il sito è online.
+1. Scarica/esporta tutto il contenuto di questa cartella (`public_html/` del repository).
+2. Entra nel **File Manager** di Hostinger (o usa FTP).
+3. Carica `index.html`, `favicon.ico` e l'intera cartella `assets/` dentro `public_html/`
+   (la radice del tuo dominio).
+4. Verifica che esistano:
+   - `assets/documents/bando-2026.pdf`
+   - `assets/images/logo-abe.png`
+5. Apri https://concorsomercurio.it/ — il sito è online.
 
-Nessun comando `npm install`, `npm run build`, `bun install` o build step è richiesto in produzione: i file si servono così come sono.
+Non serve `npm install`, `npm run build`, `bun install` o alcun build step:
+i file vengono serviti così come sono.
 
 ## Test locale
 
-Apri `index.html` direttamente nel browser, oppure per evitare problemi CORS con gli iframe YouTube avvia un piccolo server statico:
+Apri `index.html` direttamente nel browser, oppure avvia un piccolo server
+statico per evitare problemi CORS con gli iframe YouTube:
 
 ```bash
-# con Python 3
 python3 -m http.server 8080
 # poi apri http://localhost:8080
 ```
 
-## Placeholder da sostituire
+## Contenuti chiave 2026
 
-Cercare nel codice e sostituire con i dati reali:
+- **Scadenza invio opere:** 31 ottobre 2026
+- **Sezioni a 20,00 €:** Poesia singola · Racconto breve · Il Coraggio · Sezione Speciale Premio Mercurio
+- **Premio Speciale ABE (10,00 €):** dedicato ai volontari di ABE ODV
+- **Beneficiario:** Associazione ABE ODV — bambino emopatico
+- **Contatti:** comitato.cartapennacalamaio@gmail.com · WhatsApp 328 5649213
+- **Posta:** Franca Pagni, via Martinengo Cesaresco 78 — 25128 Brescia
+- **Instagram:** https://www.instagram.com/concorsomercurio/
 
-- `comitato.cartapennacalamaio@gmail.it` — email del comitato
-- `+39 328 5649213` — recapito telefonico
-- `@concorsomercurio` — handle Instagram
-- `[INSERIRE ASSOCIAZIONE BENEFICIARIA]` — associazione destinataria del ricavato
-- Foto mancante per la **II Edizione (2020)** — aggiungere `assets/images/edizioni/2020.jpg` e aggiornare l'oggetto corrispondente in `assets/js/main.js`.
+I dettagli operativi e le modalità di donazione (IBAN, Postepay, PayPal) non
+sono pubblicati sulla landing page: sono indicati esclusivamente nel
+**bando ufficiale** (`assets/documents/bando-2026.pdf`).
 
 ## Modifiche
 
-- **Testi & contenuti**: `index.html`
-- **Stili & colori**: `assets/css/style.css`
-- **Carosello edizioni & video**: `assets/js/main.js`
-
-## Note
-
-- Il sito mantiene la stessa identità visiva della versione React/TanStack: palette warm (carta/terracotta/oro), tipografia Cormorant Garamond + Inter, logo Carta Penna Calamaio nella sezione "Il Concorso", artwork di Mercurio nell'hero.
-- Tutte le edizioni sono etichettate in numeri romani (I, II, … VIII).
+- **Testi & contenuti:** `index.html`
+- **Stili & colori:** `assets/css/style.css`
+- **Carosello edizioni & video:** `assets/js/main.js`
+- **Bando aggiornato:** sostituire `assets/documents/bando-2026.pdf`
+- **Logo ABE:** sostituire `assets/images/logo-abe.png`
+- **Foto edizioni future:** aggiungere in `assets/images/carousel/` o
+  `assets/images/edizioni/` e aggiornare l'array `editions` in `assets/js/main.js`

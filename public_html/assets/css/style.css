@@ -218,3 +218,43 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spac
 @media (prefers-reduced-motion: reduce) {
   .float, .float-slow { animation: none; }
 }
+
+/* INFO BADGE */
+.info-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.75rem; padding: 0.6rem 1.1rem; border-radius: 999px; background: rgba(138,75,47,0.08); border: 1px solid rgba(138,75,47,0.25); color: var(--primary-dark); font-size: 0.95rem; }
+.info-badge-dot { color: var(--terracotta); font-size: 0.7rem; }
+.info-badge strong { font-weight: 600; }
+
+/* ABE */
+.abe-grid { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .abe-grid { grid-template-columns: 4fr 7fr; } }
+.abe-figure { max-width: 320px; margin: 0 auto; }
+.abe-frame { padding: 2rem; border-radius: 1.5rem; background: #FFF8EF; border: 1px solid rgba(74,47,36,0.12); box-shadow: var(--shadow-warm); display: flex; align-items: center; justify-content: center; }
+.abe-frame img { max-height: 180px; width: auto; object-fit: contain; }
+
+/* BANDO */
+.bando-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; margin-top: 1rem; }
+@media (min-width: 640px) { .bando-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .bando-grid { grid-template-columns: repeat(3, 1fr); } }
+.bando-card { display: flex; flex-direction: column; gap: 0.4rem; }
+.bando-tag { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 0.75rem; background: rgba(138,75,47,0.1); color: var(--primary-dark); font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+.bando-tag.gold-tag { background: var(--gradient-gold); color: var(--primary-fg); width: auto; padding: 0 0.85rem; font-size: 0.85rem; letter-spacing: 0.15em; }
+.bando-card-feature { border-color: rgba(212,168,107,0.55); background: linear-gradient(135deg, rgba(255,248,239,0.9), rgba(232,217,196,0.6)); }
+.bando-fee { margin-top: auto; padding-top: 0.75rem; font-size: 0.95rem; color: var(--primary-dark); border-top: 1px dashed rgba(74,47,36,0.18); }
+.bando-note { margin-top: 2rem; padding: 1.25rem 1.5rem; border-radius: 1rem; background: rgba(232,217,196,0.5); border: 1px solid rgba(74,47,36,0.12); font-style: italic; color: rgba(59,42,34,0.85); }
+
+/* COME PARTECIPARE */
+.participate-block { margin-top: 5rem; }
+.steps-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: 1fr; margin: 0; padding: 0; }
+@media (min-width: 640px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } }
+.step { padding: 1.75rem; border-radius: 1.25rem; background: rgba(255,248,239,0.7); border: 1px solid rgba(212,168,107,0.25); backdrop-filter: blur(14px); }
+.step-num { font-family: var(--font-display); font-size: 2rem; color: var(--primary); display: block; margin-bottom: 0.5rem; }
+.step h3 { font-size: 1.25rem; color: var(--primary-dark); }
+.step p { margin-top: 0.5rem; color: rgba(59,42,34,0.75); line-height: 1.55; font-size: 0.95rem; }
+
+.how-contacts { margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .how-contacts { grid-template-columns: repeat(3, 1fr); } }
+.how-contact { padding: 1.1rem 1.25rem; border-radius: 1rem; background: rgba(255,248,239,0.65); border: 1px solid rgba(74,47,36,0.12); }
+.lbl-dark { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--primary); margin-bottom: 0.35rem; }
+.how-contact a { color: var(--primary-dark); border-bottom: 1px solid rgba(138,75,47,0.25); }
+.how-contact a:hover { border-color: var(--primary); }
