@@ -258,3 +258,37 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spac
 .lbl-dark { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--primary); margin-bottom: 0.35rem; }
 .how-contact a { color: var(--primary-dark); border-bottom: 1px solid rgba(138,75,47,0.25); }
 .how-contact a:hover { border-color: var(--primary); }
+
+/* Edition intra-photo navigation */
+.ed-card { position: relative; }
+.ed-photo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 47, 36, 0.25);
+  background: rgba(248, 239, 228, 0.92);
+  color: #3B2A22;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.ed-photo-nav:hover { background: #F8EFE4; }
+.ed-photo-nav.prev { left: 12px; }
+.ed-photo-nav.next { right: 12px; }
+.ed-cap-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+.ed-cap { display: flex; align-items: center; gap: 12px; }
