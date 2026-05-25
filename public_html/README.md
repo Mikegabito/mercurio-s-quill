@@ -82,6 +82,38 @@ sono pubblicati sulla landing page: sono indicati esclusivamente nel
 - **Carosello edizioni & video:** `assets/js/main.js`
 - **Bando aggiornato:** sostituire `assets/documents/bando-2026.pdf`
 - **Logo ABE:** sostituire `assets/images/logos/logo-abe.png`
-- **Foto edizioni future:** aggiungere i file dentro la cartella della relativa edizione
-  in `assets/images/carousel/<N>-Edizione/` e listare i nomi file nell'array
-  `carouselImages` di `assets/js/main.js` (campo `images`).
+
+### Aggiungere nuove foto al carosello edizioni
+
+Le foto sono organizzate **per edizione** (non per anno) in cartelle dedicate
+senza spazi nel nome:
+
+```
+assets/images/carousel/
+├── I-Edizione/      → mostrata come "I Edizione" (2019)
+├── II-Edizione/     → "II Edizione" (2020)
+├── III-Edizione/    → "III Edizione" (2021)
+├── IV-Edizione/     → "IV Edizione" (2022)
+├── V-Edizione/      → "V Edizione" (2023)
+├── VI-Edizione/     → "VI Edizione" (2024)
+├── VII-Edizione/    → "VII Edizione" (2025)
+└── VIII-Edizione/   → "VIII Edizione" (2026)
+```
+
+Per aggiungere una nuova foto, ad esempio alla VII Edizione:
+
+1. Caricare il file in `assets/images/carousel/VII-Edizione/`
+   (es. `2025b.jpg`).
+2. Aprire `assets/js/main.js` e aggiungere il nome del file nell'array
+   `images` della voce corrispondente in `carouselImages`:
+
+   ```js
+   { label: "VII Edizione", year: "2025",
+     folder: "assets/images/carousel/VII-Edizione/",
+     images: ["2025.jpg", "2025b.jpg"] }
+   ```
+
+Quando un'edizione contiene più foto, sulla card del carosello compaiono
+automaticamente le frecce per scorrere le immagini di quella edizione.
+Se l'array `images` è vuoto (es. VIII Edizione), la card mostra il
+placeholder "Foto in arrivo".
