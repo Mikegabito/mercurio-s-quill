@@ -117,12 +117,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spac
 /* CONCORSO */
 .concorso-grid { display: grid; gap: 3rem; align-items: center; }
 .prose { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; font-size: 1.1rem; line-height: 1.7; color: rgba(59,42,34,0.78); }
-.cpc-figure { position: relative; max-width: 220px; margin: 0 auto; }
-.cpc-glow { position: absolute; inset: -0.75rem; border-radius: 50%; background: var(--gradient-warm); box-shadow: var(--shadow-warm); }
-.cpc-frame { position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: 50%; border: 1px solid rgba(212,168,107,0.3); background: #FFF8EF; box-shadow: var(--shadow-warm); display: flex; align-items: center; justify-content: center; padding: 2rem; }
-.cpc-frame img { width: 100%; height: 100%; object-fit: contain; }
+.cpc-figure { position: relative; width: min(300px, 100%); margin: 0 auto; }
+.cpc-glow { display: none; }
+.cpc-frame { position: relative; width: min(300px, 100%); max-width: 100%; margin: 0 auto; padding: 0; background: transparent; border: none; border-radius: 0; box-shadow: none; overflow: visible; }
+.cpc-frame img { width: 100%; max-width: 100%; height: auto; object-fit: contain; display: block; border-radius: 0; background: transparent; box-shadow: none; }
 .cpc-figure figcaption { margin-top: 1.25rem; text-align: center; font-family: var(--font-display); font-style: italic; color: rgba(59,42,34,0.7); }
-@media (min-width: 640px) { .cpc-figure { max-width: 280px; } }
 @media (min-width: 1024px) {
   .concorso-grid { grid-template-columns: 7fr 5fr; }
   .cpc-figure { max-width: 22rem; }
